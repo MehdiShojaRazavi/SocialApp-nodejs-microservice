@@ -1,0 +1,7 @@
+{
+  "name": "Social App - comments project - dev",
+  "db": {
+    "address": "mongodb://localhost:27017/socialapp-comments"
+  },
+  "port": "8002"
+}

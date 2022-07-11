@@ -1,0 +1,7 @@
+{
+  "name": "Social App - Users project - dev",
+  "db": {
+    "address": "mongodb://localhost:27017/socialapp-Users"
+  },
+  "port": "8001"
+}
