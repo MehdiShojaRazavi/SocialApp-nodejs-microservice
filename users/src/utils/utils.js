@@ -17,7 +17,6 @@ module.exports = new class{
     return (!!user);
   }
 
-
   deleteInvalidPropertyInObject(data = {}, blackListFields = []) {
     let nullishData = ["", " ", "0", 0, null, undefined]
     Object.keys(data).forEach(key => {

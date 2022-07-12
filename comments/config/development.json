@@ -3,5 +3,7 @@
   "db": {
     "address": "mongodb://localhost:27017/socialapp-comments"
   },
-  "port": "8002"
+  "gatewayPort": "8000",
+  "usersPort": "8001",
+  "commentsPort": "8002"
 }

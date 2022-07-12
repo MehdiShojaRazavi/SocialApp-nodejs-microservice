@@ -2,6 +2,7 @@ const autoBind = require('auto-bind');
 const {validationResult} = require('express-validator');
 const User = require('../database/users');
 const axios = require('axios');
+const config = require('config');
 
 module.exports = class {
   constructor(){
@@ -44,11 +45,11 @@ module.exports = class {
   };
  
   async deleteAllCommentsByUserId_CommentService(userId, res){
-    await axios.delete('http://localhost:8002/manage/deleteAll/' + userId).then((resAxios)=>{
+    const commentsPort = config.get('commentsPort');
+    await axios.delete(`http://localhost:${commentsPort}/manage/deleteAll/` + userId).then((resAxios)=>{
       res.resAxios = resAxios;
     }).catch((error)=>{
       return error.message; 
     });
   }
-
 }; 

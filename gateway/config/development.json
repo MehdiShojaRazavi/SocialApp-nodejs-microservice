@@ -1,4 +1,6 @@
 {
   "name": "Social App - Gateway project - dev",
-  "port": "8000"
+  "gatewayPort": "8000",
+  "usersPort": "8001",
+  "commentsPort": "8002"
 }

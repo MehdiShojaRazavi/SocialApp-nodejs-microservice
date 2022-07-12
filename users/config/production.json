@@ -3,5 +3,7 @@
   "db": {
     "address": ""
   },
-  "port": ""
+  "gatewayPort": "",
+  "usersPort": "",
+  "commentsPort": ""
 }

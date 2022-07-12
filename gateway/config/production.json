@@ -1,4 +1,6 @@
 {
   "name": "Social App - Gateway project - production",
-  "port": ""
+  "gatewayPort": "",
+  "usersPort": "",
+  "commentsPort": ""
 }

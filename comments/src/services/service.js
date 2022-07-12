@@ -2,7 +2,8 @@ const autoBind = require('auto-bind');
 const {validationResult} = require('express-validator');
 const Comment = require('../database/comments');
 const axios = require('axios');
-
+const config = require('config');
+const usersPort = config.get('usersPort');
 
 module.exports = class {
   constructor(){
@@ -46,7 +47,7 @@ module.exports = class {
 
   async getUsernameFromUserService(obj, res){
     const {userId} = obj.data[0];
-    await axios.get('http://localhost:8001/manage/' + userId).then((resAxios)=>{
+    await axios.get(`http://localhost:${usersPort}/manage/` + userId).then((resAxios)=>{
       const {username} = resAxios.data.data[0];
       obj.username = username;
       obj = obj.data.map(v=> delete(v.userId))

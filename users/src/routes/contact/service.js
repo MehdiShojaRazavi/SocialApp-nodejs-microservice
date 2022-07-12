@@ -2,7 +2,6 @@ const service = require("../../services/service.js");
 const utils = require('../../utils/utils');
 
 module.exports = new (class extends service {
-
   async editContactByUserId(req, res) {
     const data = req.body;
     const BlackListFields = [""]
