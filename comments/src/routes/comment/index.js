@@ -23,12 +23,16 @@ router.delete("/deleteall/:userId",
 service.deleteAllCommentsByUserId
 );
 
-router.get("/:id", 
-service.getCommentById
-);
-
 router.get("/all/:userId", 
 service.getAllCommentsByUserId
+);
+
+router.get("/top10Hashtags", 
+service.getTop10Hshtags
+);
+
+router.get("/:id", 
+service.getCommentById
 );
 
 module.exports = router;

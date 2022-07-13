@@ -120,4 +120,39 @@ module.exports = new (class extends service {
     });
   }
 
+  async getTop10Hshtags(req, res) {
+    const arrHashtags = [];
+    arrHashtags.push(1);
+    arrHashtags.push(1);
+    console.log(arrHashtags);
+
+    this.Comment.aggregate(
+      [
+        { $unwind: "$hashtags" },
+        { $group: { _id: "$hashtags", count: { $sum: 1 } } },
+        { $project: { count: { $add: ["$count", 1] }, tag: "$_id" } },
+        { $project: { _id: 0 } },
+        { $sort: { count: -1 } },
+        { $limit: 10 },
+      ],
+      async (err, data) => {
+        if (err)
+          return this.response({
+            res,
+            status: 500,
+            message: "InternalServerError " + err.message,
+          });
+        if (data.length < 1)
+          return this.response({ res, status: 400, message: "Not found" });
+
+        this.response({
+          res,
+          status: 200,
+          message: "ok",
+          data: data,
+        });
+      }
+    );
+  }
+
 })();
