@@ -1,20 +1,23 @@
 const winston = require('winston');
-
+const createError = require('http-errors');
 module.exports =  function(app){
   
   app.use((req, res, next)=>{
-    res.status(404).json({
-      message : `Route ${req.url} not found`
-    });
+    next(createError.NotFound("this URL not found"));
+
   });
 
   app.use((err, req, res, next)=>{
     winston.error(err.message, err);
-
-    const status = err?.status || 500;
-    const message = err?.message || 'InternalServerError';
+    const serverError = createError.InternalServerError;
+    const status = err?.status || serverError.status;
+    const message = err?.message || serverError.message;
     res.status(status).json({
-      message
+      data: null,
+      errors:{
+        status,
+        message
+      }
     });
   });
 
