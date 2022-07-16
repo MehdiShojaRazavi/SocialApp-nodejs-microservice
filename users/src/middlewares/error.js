@@ -4,7 +4,6 @@ module.exports =  function(app){
   
   app.use((req, res, next)=>{
     next(createError.NotFound("this URL not found"));
-
   });
 
   app.use((err, req, res, next)=>{
